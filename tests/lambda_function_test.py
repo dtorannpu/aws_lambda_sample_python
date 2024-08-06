@@ -18,7 +18,12 @@ def lambda_context():
 
 
 def test_lambda_handler(lambda_context):
-    event = {}
+    event = {
+        "user_id": "111",
+        "project": "test",
+        "ip": "192.168.0.1",
+        
+    }
 
     response = handler(event, lambda_context)
 

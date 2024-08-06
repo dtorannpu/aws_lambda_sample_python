@@ -16,7 +16,9 @@ COPY --from=builder /work/src/requirements.txt ${LAMBDA_TASK_ROOT}
 RUN pip install -r requirements.txt
 
 # Copy function code
-COPY ./aws_lambda_sample_python/lambda_function.py ${LAMBDA_TASK_ROOT}
+COPY ./aws_lambda_sample_python/lambda_function.py ${LAMBDA_TASK_ROOT}/aws_lambda_sample_python/
+COPY ./aws_lambda_sample_python/__init__.py ${LAMBDA_TASK_ROOT}/aws_lambda_sample_python/
+COPY ./aws_lambda_sample_python/schemas.py ${LAMBDA_TASK_ROOT}/aws_lambda_sample_python/
 
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
-CMD [ "lambda_function.handler" ]
+CMD [ "aws_lambda_sample_python.lambda_function.handler" ]
