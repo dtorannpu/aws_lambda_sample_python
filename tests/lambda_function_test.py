@@ -31,3 +31,11 @@ def test_lambda_handler(lambda_context):
 
     assert response["statusCode"] == HTTPStatus.OK
     assert response["body"] == "hello world"
+
+
+def test_lambda_handler_validate_error(lambda_context):
+    event = {"user_id": "111", "project": "test"}
+
+    response = handler(event, lambda_context)
+
+    assert response["statusCode"] == HTTPStatus.BAD_REQUEST
