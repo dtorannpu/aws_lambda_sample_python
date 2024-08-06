@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "aws-lambda-sample-python"
+name = "aws_lambda_sample_python"
 version = "0.1.0"
 description = ""
 authors = ["dtorannpu <dtorannpu@gmail.com>"]
