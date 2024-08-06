@@ -1,5 +1,8 @@
-import pytest
 from dataclasses import dataclass
+from http import HTTPStatus
+
+import pytest
+
 from aws_lambda_sample_python.lambda_function import handler
 
 
@@ -22,10 +25,9 @@ def test_lambda_handler(lambda_context):
         "user_id": "111",
         "project": "test",
         "ip": "192.168.0.1",
-        
     }
 
     response = handler(event, lambda_context)
 
-    assert response["statusCode"] == 200
+    assert response["statusCode"] == HTTPStatus.OK
     assert response["body"] == "hello world"
